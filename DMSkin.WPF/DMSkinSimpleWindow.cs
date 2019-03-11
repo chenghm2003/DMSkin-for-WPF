@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
+using SystemCommands = DMSkin.Core.WIN32.SystemCommands;
 
 namespace DMSkin.WPF
 {
@@ -151,7 +152,7 @@ namespace DMSkin.WPF
             // MINMAXINFO structure  
             MINMAXINFO mmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
 
-            // Get handle for nearest monitor to this window  
+            //拿到最靠近当前软件的显示器
             IntPtr hMonitor = NativeMethods.MonitorFromWindow(Handle, NativeConstants.MONITOR_DEFAULTTONEAREST);
 
             // Get monitor info   显示屏
@@ -163,29 +164,20 @@ namespace DMSkin.WPF
             // Convert working area  
             RECT workingArea = monitorInfo.rcWork;
 
-            // Set the maximized size of the window  
-            //ptMaxSize：  设置窗口最大化时的宽度、高度
-            //mmi.ptMaxSize.x = (int)dpiIndependentSize.X;
-            //mmi.ptMaxSize.y = (int)dpiIndependentSize.Y;
-
-            // Set the position of the maximized window  
+            //设置最大化的时候的坐标 
             mmi.ptMaxPosition.x = workingArea.left;
             mmi.ptMaxPosition.y = workingArea.top;
 
-            // Get HwndSource  
             if (source == null)
-                // Should never be null  
                 throw new Exception("Cannot get HwndSource instance.");
             if (source.CompositionTarget == null)
-                // Should never be null  
                 throw new Exception("Cannot get HwndTarget instance.");
 
             Matrix matrix = source.CompositionTarget.TransformToDevice;
 
             Point dpiIndenpendentTrackingSize = matrix.Transform(new Point(
                this.MinWidth,
-               this.MinHeight
-               ));
+               this.MinHeight));
 
             if (DMFullScreen)
             {
@@ -199,11 +191,12 @@ namespace DMSkin.WPF
             }
             else
             {
-                mmi.ptMaxSize.x = workingArea.right;
+                //设置窗口最大化的尺寸
+                mmi.ptMaxSize.x = workingArea.right - workingArea.left;
                 mmi.ptMaxSize.y = workingArea.bottom;
             }
 
-            // Set the minimum tracking size ptMinTrackSize： 设置窗口最小宽度、高度 
+            //设置最小跟踪大小
             mmi.ptMinTrackSize.x = (int)dpiIndenpendentTrackingSize.X;
             mmi.ptMinTrackSize.y = (int)dpiIndenpendentTrackingSize.Y;
 

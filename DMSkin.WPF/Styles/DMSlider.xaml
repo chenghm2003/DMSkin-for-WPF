@@ -2126,11 +2126,6 @@
                 <SolidColorBrush>#00FFFFFF</SolidColorBrush>
             </Setter.Value>
         </Setter>
-        <Setter Property="TextElement.Foreground">
-            <Setter.Value>
-                <SolidColorBrush>#FFC4C4C4</SolidColorBrush>
-            </Setter.Value>
-        </Setter>
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Slider">
@@ -2171,7 +2166,7 @@
                                     <Rectangle
                                         Name="PART_SelectionRange"
                                         Height="2"
-                                        Fill="#BBFFFFFF"
+                                        Fill="#99FFFFFF"
                                         Visibility="Hidden" />
                                 </Canvas>
                             </Border>
@@ -2278,7 +2273,7 @@
                                                                     Margin="0,0,0,0"
                                                                     HorizontalAlignment="Center"
                                                                     VerticalAlignment="Center"
-                                                                    Fill="White" />
+                                                                    Fill="#999999" />
                                                             </Grid>
                                                             <!--<ControlTemplate.Triggers>
                                                                 <Trigger Property="UIElement.IsMouseOver">
