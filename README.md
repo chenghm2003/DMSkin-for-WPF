@@ -1,12 +1,16 @@
 # DMSkin-for-WPF
 
+
+# ！！！目前Windows 10 更新之后，修改了系统某些特性造成软件闪烁，此项目目前仅作学习之用。！！！
+[中文说明请点这里](./DMSkin.Docs/)
+
 ![](https://img.shields.io/badge/.NET-%3E%3D3.5-brightgreen.svg)
 ![](https://img.shields.io/badge/version-2.5.1.1-blue.svg)
 ![](https://img.shields.io/badge/license-MIT-green.svg)
 
 #### A powerful *WPF borderless window framework* and *control library* utility.
 
-[中文说明请点这里](./DMSkin.Docs/)
+
 
 <img src="https://raw.githubusercontent.com/944095635/DMSkin-for-WPF/master/DMSkin.ScreenShot/demo1.png" align="center">
 <img src="https://raw.githubusercontent.com/944095635/DMSkin-for-WPF/master/DMSkin.ScreenShot/demo2.png" align="center">
